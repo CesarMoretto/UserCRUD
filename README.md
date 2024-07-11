@@ -6,7 +6,7 @@ CRUD de um cadastro de usuário utilizando Spring Boot, Microsoft SQL e com uma 
 
 (Arquivo com o script do sql adicionado para facilitar a criação do BD)
 
-Alterar as seguintes configurações para as correspondentes do seu Microsoft SQL:
+Alterar as seguintes configurações no arquivo "application.porperties" para as correspondentes do seu Microsoft SQL:
 
 
 (usuário e senha)
