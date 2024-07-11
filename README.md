@@ -18,4 +18,4 @@ spring.datasource.password=senha
 
 Para iniciar a aplicação execute a classe CadastroApplication.java
 
-Após rodar a aplicação acessar no navegador a página: http://localhost:8080
+Após rodar a aplicação acessar no navegador o endereço: http://localhost:8080
