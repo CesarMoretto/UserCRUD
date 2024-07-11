@@ -13,6 +13,7 @@ Alterar as seguintes configurações para as correspondentes do seu Microsoft SQ
 
 
 spring.datasource.username=sa
+
 spring.datasource.password=senha
 
 Para iniciar a aplicação execute a classe CadastroApplication.java
