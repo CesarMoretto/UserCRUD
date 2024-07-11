@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Usuários</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            color: #2d2d2d;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 32px;
+        }
+
+        h2 {
+            font-size: 24px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-size: 18px;
+            color: #4a4a4a;
+        }
+
+        input[type="text"], input[type="email"], input[type="password"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus {
+            border-color: #5a67d8;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #5a67d8;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #434190;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f4f4f9;
+            color: #2d2d2d;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .actions a, .actions form {
+            display: inline;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 12px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #e53e3e;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #c53030;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Cadastro de Usuários</h1>
+    <form action="#" th:action="@{/usuarios/html}" th:object="${usuario}" method="post">
+        <input type="hidden" th:field="*{id}" />
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" th:field="*{nome}" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" th:field="*{email}" required />
+
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" name="senha" th:field="*{senha}" required />
+
+        <button type="submit">Salvar</button>
+    </form>
+
+    <h2>Lista de Usuários</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="usuario : ${usuarios}">
+            <td th:text="${usuario.id}">1</td>
+            <td th:text="${usuario.nome}">Nome</td>
+            <td th:text="${usuario.email}">Email</td>
+            <td class="actions">
+                <a class="btn" th:href="@{/usuarios/editar/{id}(id=${usuario.id})}">Editar</a>
+                <form th:action="@{/usuarios/deletar/{id}(id=${usuario.id})}" method="post">
+                    <button type="submit" class="btn">Deletar</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Usuário</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            color: #2d2d2d;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            font-size: 18px;
+            color: #4a4a4a;
+        }
+        input[type="text"], input[type="email"], input[type="password"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus {
+            border-color: #5a67d8;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #5a67d8;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #434190;
+        }
+    </style>
+</head>
+<meta>
+<body>
+<h1>Editar Usuário</h1>
+<form action="#" th:action="@{/usuarios/editar/{id}(id=${usuario.id})}" th:object="${usuario}" method="post">
+    <input type="hidden" th:field="*{id}" />
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="nome" th:field="*{nome}" required /><br />
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" th:field="*{email}" required /><br />
+    <label for="senha">Senha:</label>
+    <input type="password" id="senha" name="senha" th:field="*{senha}" required /><br />
+    <button type="submit">Salvar</button>
+</form>
+</body>
+</html>
